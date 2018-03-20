@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  gitlab-runner:
+    image: gitlab/gitlab-runner:latest
+    restart: always
+    network_mode: "bridge"
+    volumes:
+      - ./config:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/gitlab-ci:/builds
+
+#networks:
+#  default:
+#    driver: bridge
+#    ipam:
+#      config:
+#       - subnet: 10.253.253.0/24

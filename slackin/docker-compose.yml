@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+
+  slackin:
+    build: .
+    restart: always
+    environment:
+      SLACK_TOKEN: $SLACK_TOKEN
+      SLACK_ORG: wsulug
+      VIRTUAL_HOST: lugslack.eecs.wsu.edu
+      VIRTUAL_PORT: 3000
+      LETSENCRYPT_HOST: lugslack.eecs.wsu.edu
+      LETSENCRYPT_EMAIL: $LUG_EMAIL
+
+networks:
+    default:
+       external:
+         name: webproxy
